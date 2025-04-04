@@ -1,0 +1,206 @@
+// style.scss - plik deweloperski Sass
+
+// 1. Zmienne
+$primary-color: #9c6a00;
+$hover-color: #be8304;
+$background-light: #f4f4f4;
+$text-color: #333;
+$font-stack: Arial, sans-serif;
+$code-font: "Courier New", monospace;
+$border-radius: 8px;
+$spacing-unit: 1rem;
+
+// 2. Mixins (domieszki)
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin button-style {
+  border-radius: $border-radius;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 100ms;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  touch-action: manipulation;
+}
+
+@mixin responsive-grid($min-width) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: 5px;
+  margin: 0 auto;
+}
+
+// 3. Rozszerzenia (placeholdery)
+%reset-margin-padding {
+  margin: 0;
+  padding: 0;
+}
+
+%centered-block {
+  display: block;
+  margin: 0 auto;
+}
+
+// Podstawowe style (mobile-first)
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: $font-stack;
+  @extend %reset-margin-padding;
+  line-height: 1.6;
+  color: $text-color;
+}
+
+html, body {
+  @extend %reset-margin-padding;
+  height: 100%;
+}
+
+.button-1 {
+  @include button-style;
+  background-color: $primary-color;
+
+  &:hover,
+  &:focus {
+    background-color: $hover-color;
+  }
+}
+
+header, footer {
+  background-color: $background-light;
+  text-align: center;
+  padding: $spacing-unit;
+}
+
+.copyright {
+  text-align: center;
+}
+
+.aim-game-photo {
+  width: 500px;
+}
+
+.domains-photos {
+  @include responsive-grid(250px);
+  max-width: 900px;
+}
+
+.profile-pic {
+  @extend %centered-block;
+}
+
+nav ul {
+  @include flex-center;
+  list-style: none;
+  @extend %reset-margin-padding;
+  
+  li {
+    margin-right: 10px;
+  }
+}
+
+main {
+  flex: 1;
+  padding: 10px;
+}
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+  background: $background-light;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+code {
+  font-family: $code-font;
+  font-size: 14px;
+  display: block;
+}
+
+img {
+  max-width: 30%;
+  height: auto;
+  border-radius: 20px;
+}
+
+// 4. Zagnieżdżanie selektorów
+#project-summary {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-unit;
+
+  .project-detail {
+    margin-bottom: 2rem;
+  }
+}
+
+// 5. Funkcje
+@function calculate-width($columns, $gap) {
+  @return calc((100% / $columns) - $gap);
+}
+
+// Zapytania medialne
+@media (min-width: 600px) {
+  nav ul li {
+    margin-right: 20px;
+  }
+  
+  #project-summary {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    article {
+      flex: 1 1 calculate-width(2, 1rem);
+      box-sizing: border-box;
+      padding: $spacing-unit;
+      background: darken($background-light, 5%);
+      margin-bottom: $spacing-unit;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  header, footer {
+    text-align: center;
+    padding: $spacing-unit * 1.5;
+  }
+  
+  nav ul {
+    display: flex;
+    
+    li {
+      margin-right: 30px;
+    }
+  }
+  
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $spacing-unit * 2;
+  }
+  
+  h1, h2, h3 {
+    border-bottom: 2px solid darken($background-light, 20%);
+    padding-bottom: 0.5rem;
+  }
+}

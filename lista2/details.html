@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szczegółowy Opis Projektów</title>
+  <link rel="stylesheet" href="scss/style.min.css">
+</head>
+<body>
+  <header>
+    <h1>Szczegółowy Opis Projektów</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="button-1">O mnie</a></li>
+        <li><a href="projects.html" class="button-1">Projekty</a></li>
+        <li><a href="details.html" class="button-1">Szczegóły</a></li>
+        <li><a href="domains.html" class="button-1">Zainteresowania</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="project-detail">
+        <h2>Projekt 1: Gra Aim CS2</h2>
+        <p>Szczegółowy opis projektu gry Aim do CS2 napisanej w Pythonie z użyciem biblioteki pyGame.</p>
+        <img src="images/aim_game.png" alt="Zdjęcie gry" class="aim-game-photo">
+        <h3>Fragment kodu:</h3>
+        <pre><code>
+          // Przykładowy fragment kodu gry
+          # Pętla gry
+          running = True
+          while running:
+              for event in pygame.event.get():
+                  if event.type == pygame.QUIT:
+                      running = False
+                  elif event.type == pygame.VIDEORESIZE:
+                      screen_width, screen_height = event.size
+                      screen = pygame.display.set_mode((screen_width, screen_height), pygame.RESIZABLE)
+                  elif event.type == pygame.MOUSEBUTTONDOWN:
+                      mouse_x, mouse_y = event.pos
+                      if (x - mouse_x) ** 2 + (y - mouse_y) ** 2 @lt;= radius ** 2:
+                          x = random.randint(radius, screen_width - radius)
+                          y = random.randint(radius, screen_height - radius)
+                          click_count += 1
+                          current_time = pygame.time.get_ticks()
+                          time_since_last_click = current_time - last_click_time
+                          last_click_time = current_time
+                          time_between_clicks.append(time_since_last_click)
+                          average_time = sum(time_between_clicks) / len(time_between_clicks) if time_between_clicks else 0
+        </code></pre>
+    </section>
+    <section class="project-detail">
+
+        <h2>Projekt 2: Strona Portfolio</h2>
+        <p>pis stworzenia responsywnej strony internetowej. Zastosowano HTML5 oraz CSS3, w tym Flexbox oraz media queries.</p>
+        <h3>Fragment kodu:</h3>
+        <pre><code>
+          /* Przykładowy fragment kodu CSS */
+          body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+          }
+        </code></pre>
+
+    </section>
+    <section class="project-detail">
+
+        <h2>Projekt 3: Gra Go</h2>
+        <p>Aplikacja pozwalająca na grę online w Go napisana w Java z użyciem JavaFX.</p>
+        <h3>Fragment kodu:</h3>
+        <pre><code>
+          // Przykładowy fragment kodu gry Go w Java
+          package com.grawgo.gra_w_go;
+          
+          import javafx.application.Application;
+          import javafx.stage.Stage;
+          import org.example.scene.SceneManager;
+          
+          public class App extends Application {
+              public static void main (String[] args){
+                  launch(args);
+              }
+              @Override
+              public void start(Stage primaryStage){
+                  SceneManager sceneManager = new SceneManager(primaryStage);
+                  sceneManager.showMenuScene();
+              }
+          }
+        </code></pre>
+
+    </section>
+  </main>
+  <footer>
+    <p class="copyright">&copy; 2025 Bartosz Olszewski</p>
+  </footer>
+</body>
+</html>
